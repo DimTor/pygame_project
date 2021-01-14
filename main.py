@@ -23,7 +23,7 @@ pause = False
 fullname = os.path.join('data', 'canon.mp3')
 pygame.mixer.music.load(fullname)
 pygame.mixer.music.play(-1)
-#sound1 = pg.mixer.Sound('boom.wav')
+music_play = True
 
 
 def terminate():  # Выход из игры
@@ -184,6 +184,13 @@ while running:
                 go_up = False
             if event.key == pygame.K_s or event.key == pygame.K_DOWN:
                 go_down = False
+            if event.key == pygame.K_DELETE:
+                if music_play:
+                    pygame.mixer.music.pause()
+                    music_play = False
+                else:
+                    pygame.mixer.music.unpause()
+                    music_play = True
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_a or event.key == pygame.K_LEFT:
                 go_left = True
